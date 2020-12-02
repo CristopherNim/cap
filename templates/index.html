@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Mushroom Prediction Deployment</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body style="background: #000;">
+ <div class="login">
+	<h1>Mushroom prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+
+    	<input type="text" name="bruises" placeholder="1 (bruise) or 0(not bruised)" required="required" />
+        <input type="text" name="gill-attachment" placeholder="1 (free) or 0 (attachment)" required="required" />
+		<input type="text" name="gill-spacing" placeholder="1 (crowded) or 0 (close)" required="required" />
+        <input type="text" name="gill-size" placeholder="1 (broad) or 0(narrow)" required="required" />
+        <input type="text" name="stalk-shape" placeholder="1 (enlarge) or 0 (tapering)" required="required" />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict if mushroom is edible</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
